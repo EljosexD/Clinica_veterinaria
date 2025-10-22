@@ -9,6 +9,6 @@
 public class Clinica_vet {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        new ClinicaApp().run();
     }
 }
