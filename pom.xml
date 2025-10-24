@@ -10,4 +10,39 @@
         <maven.compiler.release>23</maven.compiler.release>
         <exec.mainClass>Clinica_vet</exec.mainClass>
     </properties>
+    <dependencies>
+        <!-- iText Core -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>itext7-core</artifactId>
+            <version>7.2.5</version>
+            <type>pom</type>
+        </dependency>
+    
+        <!-- Kernel Module -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>kernel</artifactId>
+            <version>7.2.5</version>
+        </dependency>
+    
+        <!-- Layout Module -->
+        <dependency>
+            <groupId>com.itextpdf</groupId>
+            <artifactId>layout</artifactId>
+            <version>7.2.5</version>
+        </dependency>
+
+        <!-- SLF4J Implementation -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.36</version>
+        </dependency>
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>RELEASE270</version>
+        </dependency>
+    </dependencies>
 </project>

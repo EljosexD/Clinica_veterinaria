@@ -26,6 +26,7 @@ public class ClinicaApp {
                     case 3 -> buscarCliente(scanner);
                     case 4 -> registrarMascota(scanner);
                     case 5 -> listarClientes();
+                    case 10 -> facturas();
                     case 0 -> {
                         System.out.println("Hasta luego.");
                         salir = true;
@@ -36,6 +37,16 @@ public class ClinicaApp {
                 System.out.println();
             }
         }
+    }
+
+    private void facturas(){
+        Facturas factura = new Facturas("Jose", "555-1234", "Firulais", "2024-06-15", 100.0);
+        JFfractura jfFactura = new JFfractura();
+        
+        factura.mostrarFactura();
+        jfFactura.setVisible(true);
+        jfFactura.setLocationRelativeTo(null);
+        jfFactura.getFactura(factura);
     }
 
     private void mostrarMenu() {
