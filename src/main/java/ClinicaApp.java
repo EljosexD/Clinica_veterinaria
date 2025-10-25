@@ -26,7 +26,8 @@ public class ClinicaApp {
                     case 3 -> buscarCliente(scanner);
                     case 4 -> registrarMascota(scanner);
                     case 5 -> listarClientes();
-                    case 10 -> facturas();
+                    case 11 -> listarMascotas();
+                    case 13 -> facturas();
                     case 0 -> {
                         System.out.println("Hasta luego.");
                         salir = true;
@@ -178,6 +179,18 @@ public class ClinicaApp {
             System.out.println(cliente.resumen());
         }
     }
+
+    // Listas de mascotas 
+    private void listarMascotas() {
+        System.out.println("--- Mascotas ---");
+        for (Cliente cliente : clientes) {
+            System.out.print("Cliente: " + cliente.getNombre());
+            for (Mascota mascota : cliente.getMascotas()) {
+                System.out.println("  - " + mascota.descripcion());
+            }
+        }
+    }
+    
 
     private Cliente encontrarClientePorId(int id) {
         for (Cliente cliente : clientes) {
