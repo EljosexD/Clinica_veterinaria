@@ -7,6 +7,7 @@ public class ClinicaApp {
 
     private final List<Cliente> clientes = new ArrayList<>();
     private int siguienteIdCliente = 1;
+    private final AgendadorCitas agendadorCitas = new AgendadorCitas();
 
     public void run() {
         Locale.setDefault(Locale.US);
@@ -26,6 +27,8 @@ public class ClinicaApp {
                     case 3 -> buscarCliente(scanner);
                     case 4 -> registrarMascota(scanner);
                     case 5 -> listarClientes();
+                    case 6 -> agendadorCitas.agendarCita(scanner, clientes);
+                    case 7 -> agendadorCitas.listarCitas();
                     case 11 -> listarMascotas();
                     case 13 -> facturas();
                     case 0 -> {
@@ -43,8 +46,7 @@ public class ClinicaApp {
     private void facturas(){
         FacturaEfectivo facturaE = new FacturaEfectivo("Jose", "555-1234", "Firulais", "2024-06-15", 100.0);
         FacturaDigital facturaD = new FacturaDigital("Jose", "555-1234", "Firulais", "2024-06-15", 100.0);
-     
-        
+
         facturaE.generarFacturaPdf();
         facturaD.generarFacturaPdf();
         // jfFactura.setVisible(true);
@@ -59,6 +61,8 @@ public class ClinicaApp {
         System.out.println("3. Buscar cliente");
         System.out.println("4. Registrar mascota");
         System.out.println("5. Listar clientes");
+        System.out.println("6. Agendar cita");
+        System.out.println("7. Listar citas");
         System.out.println("0. Salir");
     }
 
@@ -192,7 +196,6 @@ public class ClinicaApp {
             }
         }
     }
-    
 
     private Cliente encontrarClientePorId(int id) {
         for (Cliente cliente : clientes) {
@@ -251,7 +254,7 @@ public class ClinicaApp {
         }
     }
 
-    private static class Cliente {
+    static class Cliente {
         private final int id;
         private String nombre;
         private String telefono;
@@ -302,7 +305,7 @@ public class ClinicaApp {
         }
     }
 
-    private static abstract class Mascota {
+    static abstract class Mascota {
         private final String nombre;
         private final int edad;
 
@@ -330,7 +333,7 @@ public class ClinicaApp {
         }
     }
 
-    private static class Perro extends Mascota {
+    static class Perro extends Mascota {
         private final String raza;
 
         Perro(String nombre, int edad, String raza) {
@@ -349,7 +352,7 @@ public class ClinicaApp {
         }
     }
 
-    private static class Gato extends Mascota {
+    static class Gato extends Mascota {
         private final String color;
 
         Gato(String nombre, int edad, String color) {

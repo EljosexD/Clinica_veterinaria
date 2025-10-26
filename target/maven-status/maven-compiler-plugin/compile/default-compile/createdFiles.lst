@@ -1,6 +1,8 @@
 ClinicaApp$Mascota.class
 ClinicaApp$Cliente.class
+AgendadorCitas.class
 Facturas.class
+AgendadorCitas$Cita.class
 ClinicaApp$Gato.class
 ClinicaApp.class
 Clinica_vet.class
