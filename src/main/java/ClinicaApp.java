@@ -41,13 +41,15 @@ public class ClinicaApp {
     }
 
     private void facturas(){
-        Facturas factura = new Facturas("Jose", "555-1234", "Firulais", "2024-06-15", 100.0);
-        JFfractura jfFactura = new JFfractura();
+        FacturaEfectivo facturaE = new FacturaEfectivo("Jose", "555-1234", "Firulais", "2024-06-15", 100.0);
+        FacturaDigital facturaD = new FacturaDigital("Jose", "555-1234", "Firulais", "2024-06-15", 100.0);
+     
         
-        factura.mostrarFactura();
-        jfFactura.setVisible(true);
-        jfFactura.setLocationRelativeTo(null);
-        jfFactura.getFactura(factura);
+        facturaE.generarFacturaPdf();
+        facturaD.generarFacturaPdf();
+        // jfFactura.setVisible(true);
+        // jfFactura.setLocationRelativeTo(null);
+        // jfFactura.getFactura(factura);
     }
 
     private void mostrarMenu() {
