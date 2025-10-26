@@ -9,10 +9,13 @@ import java.util.Scanner;
 
 public class AgendadorCitas {
 
+    // Repositorio temporal de las citas agendadas durante la ejecución.
     private final List<Cita> citas = new ArrayList<>();
+    // Formatos consistentes para fecha y hora requeridos al registrar.
     private final DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ROOT);
     private final DateTimeFormatter formatoHora = DateTimeFormatter.ofPattern("HH:mm", Locale.ROOT);
 
+    // Flujo principal: valida datos y enlaza la cita con cliente + mascota.
     public void agendarCita(Scanner scanner, List<ClinicaApp.Cliente> clientes) {
         if (clientes.isEmpty()) {
             System.out.println("Debe registrar al menos un cliente para agendar citas.");
@@ -44,6 +47,7 @@ public class AgendadorCitas {
         System.out.println("Cita agendada para " + cliente.getNombre() + " y su mascota " + mascota.getNombre() + ".");
     }
 
+    // Presenta un listado numerado de las citas actualmente registradas.
     public void listarCitas() {
         if (citas.isEmpty()) {
             System.out.println("No hay citas agendadas.");
@@ -55,6 +59,7 @@ public class AgendadorCitas {
         }
     }
 
+    // Despliega los clientes existentes y devuelve el seleccionado por ID.
     private ClinicaApp.Cliente seleccionarCliente(Scanner scanner, List<ClinicaApp.Cliente> clientes) {
         System.out.println("--- Seleccione un cliente ---");
         for (ClinicaApp.Cliente cliente : clientes) {
@@ -71,6 +76,7 @@ public class AgendadorCitas {
         return null;
     }
 
+    // Permite escoger una mascota específica del cliente antes de agendar.
     private ClinicaApp.Mascota seleccionarMascota(Scanner scanner, ClinicaApp.Cliente cliente) {
         System.out.println("--- Mascotas del cliente ---");
         List<ClinicaApp.Mascota> mascotas = cliente.getMascotas();
@@ -86,6 +92,7 @@ public class AgendadorCitas {
         return mascotas.get(indice);
     }
 
+    // Valida que la fecha ingresada cumpla el formato esperado.
     private LocalDate leerFecha(Scanner scanner, String mensaje) {
         System.out.print(mensaje);
         String entrada = scanner.nextLine().trim();
@@ -97,6 +104,7 @@ public class AgendadorCitas {
         }
     }
 
+    // Valida que la hora ingresada cumpla el formato esperado (24h).
     private LocalTime leerHora(Scanner scanner, String mensaje) {
         System.out.print(mensaje);
         String entrada = scanner.nextLine().trim();
@@ -108,6 +116,7 @@ public class AgendadorCitas {
         }
     }
 
+    // Reutiliza la misma lectura robusta de enteros usada en la app principal.
     private int leerEntero(Scanner scanner) {
         while (true) {
             String linea = scanner.nextLine().trim();
@@ -123,6 +132,7 @@ public class AgendadorCitas {
         }
     }
 
+    // Estructura inmutable para conservar los datos clave de cada cita.
     private record Cita(ClinicaApp.Cliente cliente, ClinicaApp.Mascota mascota,
                         LocalDate fecha, LocalTime hora, String motivo) {
         String descripcion() {

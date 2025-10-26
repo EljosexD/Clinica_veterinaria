@@ -5,8 +5,11 @@ import java.util.Scanner;
 
 public class ClinicaApp {
 
+    // Registro en memoria de todos los clientes y sus mascotas asociadas.
     private final List<Cliente> clientes = new ArrayList<>();
+    // Id incremental sencillo para diferenciar clientes en la sesión actual.
     private int siguienteIdCliente = 1;
+    // Gestor encapsulado de citas para mantener esa lógica separada.
     private final AgendadorCitas agendadorCitas = new AgendadorCitas();
 
     public void run() {
@@ -42,7 +45,6 @@ public class ClinicaApp {
             }
         }
     }
-
     private void facturas(){
         FacturaEfectivo facturaE = new FacturaEfectivo("Jose", "555-1234", "Firulais", "2024-06-15", 100.0);
         FacturaDigital facturaD = new FacturaDigital("Jose", "555-1234", "Firulais", "2024-06-15", 100.0);
@@ -66,6 +68,7 @@ public class ClinicaApp {
         System.out.println("0. Salir");
     }
 
+    // Flujo básico para capturar la información mínima de un cliente.
     private void crearCliente(Scanner scanner) {
         System.out.println("--- Crear cliente ---");
         String nombre = leerTextoObligatorio(scanner, "Nombre: ");
@@ -75,6 +78,7 @@ public class ClinicaApp {
         System.out.println("Cliente creado con ID " + cliente.getId());
     }
 
+    // Permite actualizar nombre/teléfono de un cliente ya registrado.
     private void editarCliente(Scanner scanner) {
         if (clientes.isEmpty()) {
             System.out.println("No hay clientes para editar.");
@@ -101,6 +105,7 @@ public class ClinicaApp {
         System.out.println("Cliente actualizado.");
     }
 
+    // Búsqueda simple por nombre o teléfono dentro de la lista actual.
     private void buscarCliente(Scanner scanner) {
         if (clientes.isEmpty()) {
             System.out.println("No hay clientes registrados.");
@@ -127,6 +132,7 @@ public class ClinicaApp {
         }
     }
 
+    // Vincula una nueva mascota (perro o gato) al cliente seleccionado.
     private void registrarMascota(Scanner scanner) {
         if (clientes.isEmpty()) {
             System.out.println("Debe registrar al menos un cliente primero.");
@@ -157,6 +163,7 @@ public class ClinicaApp {
         System.out.println("Mascota registrada para el cliente " + cliente.getNombre() + ".");
     }
 
+    // Crea la instancia de perro con datos obligatorios y opcionales.
     private Mascota crearPerro(Scanner scanner) {
         System.out.println("--- Registrar perro ---");
         String nombre = leerTextoObligatorio(scanner, "Nombre: ");
@@ -166,6 +173,7 @@ public class ClinicaApp {
         return new Perro(nombre, edad, raza);
     }
 
+    // Crea la instancia de gato con datos obligatorios y opcionales.
     private Mascota crearGato(Scanner scanner) {
         System.out.println("--- Registrar gato ---");
         String nombre = leerTextoObligatorio(scanner, "Nombre: ");
@@ -175,6 +183,7 @@ public class ClinicaApp {
         return new Gato(nombre, edad, color);
     }
 
+    // Muestra el resumen de todos los clientes registrados.
     private void listarClientes() {
         if (clientes.isEmpty()) {
             System.out.println("No hay clientes registrados.");
@@ -187,6 +196,7 @@ public class ClinicaApp {
     }
 
     // Listas de mascotas 
+    // Recorre cada cliente mostrando el detalle de sus mascotas.
     private void listarMascotas() {
         System.out.println("--- Mascotas ---");
         for (Cliente cliente : clientes) {
@@ -197,6 +207,7 @@ public class ClinicaApp {
         }
     }
 
+    // Utilidad para localizar rápidamente un cliente por su ID asignado.
     private Cliente encontrarClientePorId(int id) {
         for (Cliente cliente : clientes) {
             if (cliente.getId() == id) {
@@ -206,6 +217,7 @@ public class ClinicaApp {
         return null;
     }
 
+    // Presenta los datos del cliente junto con el inventario de mascotas.
     private void mostrarDetalleCliente(Cliente cliente) {
         System.out.println(cliente.resumen());
         if (cliente.getMascotas().isEmpty()) {
@@ -217,6 +229,7 @@ public class ClinicaApp {
         }
     }
 
+    // Garantiza entradas de texto no vacías para datos críticos.
     private String leerTextoObligatorio(Scanner scanner, String mensaje) {
         while (true) {
             System.out.print(mensaje);
@@ -228,6 +241,7 @@ public class ClinicaApp {
         }
     }
 
+    // Lector robusto para enteros desde consola, reutilizado en todo el flujo.
     private int leerEntero(Scanner scanner) {
         while (true) {
             String linea = scanner.nextLine().trim();
@@ -243,6 +257,7 @@ public class ClinicaApp {
         }
     }
 
+    // Variante que además impide valores negativos (por ejemplo, edad).
     private int leerEnteroNoNegativo(Scanner scanner, String mensaje) {
         while (true) {
             System.out.print(mensaje);
@@ -254,6 +269,7 @@ public class ClinicaApp {
         }
     }
 
+    // Representa a un cliente de la clínica y almacena sus mascotas.
     static class Cliente {
         private final int id;
         private String nombre;
@@ -305,6 +321,7 @@ public class ClinicaApp {
         }
     }
 
+    // Clase base para modelar información compartida entre mascotas.
     static abstract class Mascota {
         private final String nombre;
         private final int edad;
@@ -333,6 +350,7 @@ public class ClinicaApp {
         }
     }
 
+    // Especialización para perros con su campo adicional de raza.
     static class Perro extends Mascota {
         private final String raza;
 
@@ -352,6 +370,7 @@ public class ClinicaApp {
         }
     }
 
+    // Especialización para gatos con su campo adicional de color.
     static class Gato extends Mascota {
         private final String color;
 
