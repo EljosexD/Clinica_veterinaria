@@ -1,3 +1,6 @@
+
+import java.awt.BorderLayout;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -16,7 +19,10 @@ public class Home extends javax.swing.JFrame {
      */
     public Home() {
         initComponents();
+        PanelCambiaPestañas.setVisible(false);
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,10 +35,12 @@ public class Home extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         Background = new javax.swing.JPanel();
+        PanelCambiaPestañas = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         historialClinico = new javax.swing.JButton();
@@ -55,16 +63,32 @@ public class Home extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Gestion");
+        setResizable(false);
 
         Background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        javax.swing.GroupLayout PanelCambiaPestañasLayout = new javax.swing.GroupLayout(PanelCambiaPestañas);
+        PanelCambiaPestañas.setLayout(PanelCambiaPestañasLayout);
+        PanelCambiaPestañasLayout.setHorizontalGroup(
+            PanelCambiaPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 820, Short.MAX_VALUE)
+        );
+        PanelCambiaPestañasLayout.setVerticalGroup(
+            PanelCambiaPestañasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 600, Short.MAX_VALUE)
+        );
+
+        Background.add(PanelCambiaPestañas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 600));
+
         jPanel4.setBackground(new java.awt.Color(0, 0, 0, 100));
 
-        jPanel3.setBackground(new java.awt.Color(161, 205, 168));
+        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/Copia de Orange Minimalist Cat Illustration Animal Hospital Logo (1) (1).png"))); // NOI18N
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/xddxd.png"))); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Roboto Light", 0, 36)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Light cat");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -72,57 +96,75 @@ public class Home extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(10, 10, 10)
+                .addGap(14, 14, 14)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
-                .addContainerGap(879, Short.MAX_VALUE))
+                .addContainerGap(1047, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(9, 9, 9)))
+                .addGap(15, 15, 15)
+                .addComponent(jLabel4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        jPanel5.setBackground(new java.awt.Color(0, 0, 0));
 
         jLabel2.setFont(new java.awt.Font("Roboto Medium", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Las mascotas son lindas :3");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addGap(239, 239, 239)
+                .addComponent(jLabel2)
+                .addContainerGap(290, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel2))
+        );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(261, 261, 261)
-                .addComponent(jLabel2)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 493, Short.MAX_VALUE)
-                .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 499, Short.MAX_VALUE)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         Background.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 600));
 
-        jPanel2.setBackground(new java.awt.Color(161, 205, 168));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 254));
+        jPanel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPanel2MouseClicked(evt);
+            }
+        });
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        historialClinico.setBackground(new java.awt.Color(161, 205, 168));
+        historialClinico.setBackground(new java.awt.Color(255, 255, 254));
         historialClinico.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         historialClinico.setForeground(new java.awt.Color(47, 47, 47));
-        historialClinico.setText("jButton1");
+        historialClinico.setText("Historial clinico");
         historialClinico.setBorderPainted(false);
         historialClinico.setFocusPainted(false);
         historialClinico.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -142,10 +184,10 @@ public class Home extends javax.swing.JFrame {
         });
         jPanel2.add(historialClinico, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 200, 180, 50));
 
-        Facturar.setBackground(new java.awt.Color(161, 205, 168));
+        Facturar.setBackground(new java.awt.Color(255, 255, 254));
         Facturar.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         Facturar.setForeground(new java.awt.Color(47, 47, 47));
-        Facturar.setText("jButton1");
+        Facturar.setText("Facturar");
         Facturar.setBorderPainted(false);
         Facturar.setFocusPainted(false);
         Facturar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -158,12 +200,17 @@ public class Home extends javax.swing.JFrame {
                 FacturarMouseExited(evt);
             }
         });
+        Facturar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                FacturarActionPerformed(evt);
+            }
+        });
         jPanel2.add(Facturar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 180, 50));
 
-        agendarCitas.setBackground(new java.awt.Color(161, 205, 168));
+        agendarCitas.setBackground(new java.awt.Color(255, 255, 254));
         agendarCitas.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         agendarCitas.setForeground(new java.awt.Color(47, 47, 47));
-        agendarCitas.setText("jButton1");
+        agendarCitas.setText("Agendar Citas");
         agendarCitas.setBorderPainted(false);
         agendarCitas.setFocusPainted(false);
         agendarCitas.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -176,12 +223,17 @@ public class Home extends javax.swing.JFrame {
                 agendarCitasMouseExited(evt);
             }
         });
+        agendarCitas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agendarCitasActionPerformed(evt);
+            }
+        });
         jPanel2.add(agendarCitas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 300, 180, 50));
 
-        crudClienteMascota.setBackground(new java.awt.Color(161, 205, 168));
+        crudClienteMascota.setBackground(new java.awt.Color(255, 255, 254));
         crudClienteMascota.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         crudClienteMascota.setForeground(new java.awt.Color(47, 47, 47));
-        crudClienteMascota.setText("jButton1");
+        crudClienteMascota.setText("crudClienteMascota");
         crudClienteMascota.setBorderPainted(false);
         crudClienteMascota.setFocusPainted(false);
         crudClienteMascota.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -205,7 +257,7 @@ public class Home extends javax.swing.JFrame {
         jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
 
         jLabel6.setText("Tu usuario :d");
-        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, -1, -1));
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, -1, -1));
 
         Background.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 0, 180, 600));
 
@@ -228,50 +280,42 @@ public class Home extends javax.swing.JFrame {
 
     private void crudClienteMascotaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crudClienteMascotaMouseExited
         // TODO add your handling code here:
-        crudClienteMascota.setBackground(new java.awt.Color(161,205,168)); 
-        crudClienteMascota.setForeground(new java.awt.Color(28, 28, 28)); 
+        crudClienteMascota.setBackground(new java.awt.Color(255,255,254)); 
     }//GEN-LAST:event_crudClienteMascotaMouseExited
 
     private void crudClienteMascotaMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crudClienteMascotaMouseMoved
         // TODO add your handling code here:
-        crudClienteMascota.setBackground(new java.awt.Color(90,147,103));
-        crudClienteMascota.setForeground(new java.awt.Color(245, 245, 245)); 
+        crudClienteMascota.setBackground(new java.awt.Color(255,204,153));
     }//GEN-LAST:event_crudClienteMascotaMouseMoved
 
     private void agendarCitasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agendarCitasMouseExited
         // TODO add your handling code here:
-        agendarCitas.setBackground(new java.awt.Color(161,205,168)); 
-        agendarCitas.setForeground(new java.awt.Color(28, 28, 28));
+        agendarCitas.setBackground(new java.awt.Color(255,255,254)); 
     }//GEN-LAST:event_agendarCitasMouseExited
 
     private void agendarCitasMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agendarCitasMouseMoved
         // TODO add your handling code here:
-        agendarCitas.setBackground(new java.awt.Color(90,147,103));
-        agendarCitas.setForeground(new java.awt.Color(245, 245, 245)); 
+        agendarCitas.setBackground(new java.awt.Color(255,153,153));
     }//GEN-LAST:event_agendarCitasMouseMoved
 
     private void FacturarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FacturarMouseExited
         // TODO add your handling code here:
-        Facturar.setBackground(new java.awt.Color(161,205,168)); 
-        Facturar.setForeground(new java.awt.Color(28, 28, 28)); 
+        Facturar.setBackground(new java.awt.Color(255,255,254)); 
     }//GEN-LAST:event_FacturarMouseExited
 
     private void FacturarMouseMoved1(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FacturarMouseMoved1
         // TODO add your handling code here:
-        Facturar.setBackground(new java.awt.Color(90,147,103));
-        Facturar.setForeground(new java.awt.Color(245, 245, 245)); 
+        Facturar.setBackground(new java.awt.Color(153,153,255));
     }//GEN-LAST:event_FacturarMouseMoved1
 
     private void historialClinicoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historialClinicoMouseExited
         // TODO add your handling code here:
-        historialClinico.setBackground(new java.awt.Color(161,205,168)); 
-        historialClinico.setForeground(new java.awt.Color(28, 28, 28)); 
+        historialClinico.setBackground(new java.awt.Color(255,255,254)); 
     }//GEN-LAST:event_historialClinicoMouseExited
 
     private void historialClinicoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_historialClinicoMouseMoved
         // TODO add your handling code here:
-        historialClinico.setBackground(new java.awt.Color(90,147,103));
-        historialClinico.setForeground(new java.awt.Color(245, 245, 245)); 
+        historialClinico.setBackground(new java.awt.Color(153,255,153));
     }//GEN-LAST:event_historialClinicoMouseMoved
 
     private void crudClienteMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crudClienteMascotaActionPerformed
@@ -281,6 +325,28 @@ public class Home extends javax.swing.JFrame {
     private void historialClinicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialClinicoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_historialClinicoActionPerformed
+
+    private void agendarCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendarCitasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_agendarCitasActionPerformed
+
+    private void FacturarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FacturarActionPerformed
+        // TODO add your handling code here:
+        JPfractura miniFactura = new JPfractura(this);
+
+        miniFactura.setSize(820,600);
+        miniFactura.setLocation(0,0);
+        PanelCambiaPestañas.setVisible(true);
+        PanelCambiaPestañas.removeAll();
+        PanelCambiaPestañas.add(miniFactura, BorderLayout.CENTER);
+        PanelCambiaPestañas.revalidate();
+        PanelCambiaPestañas.repaint();
+    }//GEN-LAST:event_FacturarActionPerformed
+
+    private void jPanel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel2MouseClicked
+        // TODO add your handling code here:
+        PanelCambiaPestañas.setVisible(false);
+    }//GEN-LAST:event_jPanel2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -310,6 +376,7 @@ public class Home extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Background;
     private javax.swing.JButton Facturar;
+    private javax.swing.JPanel PanelCambiaPestañas;
     private javax.swing.JButton agendarCitas;
     private javax.swing.JButton crudClienteMascota;
     private javax.swing.JButton historialClinico;
@@ -323,5 +390,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
 }

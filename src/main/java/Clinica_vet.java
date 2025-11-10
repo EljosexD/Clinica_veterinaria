@@ -9,9 +9,8 @@
 public class Clinica_vet {
 
     public static void main(String[] args) {
-        new ClinicaApp().run();
-        // Home xd = new Home();
-        // xd.setVisible(true);
-        // xd.setLocationRelativeTo(null);
+        Home xdd = new Home();
+        xdd.setVisible(true);
+        xdd.setLocationRelativeTo(null);
     }
 }
