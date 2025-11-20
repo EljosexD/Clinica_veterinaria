@@ -205,6 +205,7 @@ public class Home extends javax.swing.JFrame {
                 FacturarActionPerformed(evt);
             }
         });
+        
         jPanel2.add(Facturar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 250, 180, 50));
 
         agendarCitas.setBackground(new java.awt.Color(255, 255, 254));
@@ -290,12 +291,25 @@ public class Home extends javax.swing.JFrame {
 
     private void agendarCitasMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agendarCitasMouseExited
         // TODO add your handling code here:
+       
+
+
+
         agendarCitas.setBackground(new java.awt.Color(255,255,254)); 
     }//GEN-LAST:event_agendarCitasMouseExited
 
     private void agendarCitasMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_agendarCitasMouseMoved
         // TODO add your handling code here:
         agendarCitas.setBackground(new java.awt.Color(255,153,153));
+
+        PanelAgendarCitas panel = new PanelAgendarCitas();
+        panel.setSize(800, 500);
+        panel.setLocation(0, 0);
+
+        PanelCambiaPestañas.removeAll();
+        PanelCambiaPestañas.add(panel, java.awt.BorderLayout.CENTER);
+        PanelCambiaPestañas.revalidate();
+        PanelCambiaPestañas.repaint();
     }//GEN-LAST:event_agendarCitasMouseMoved
 
     private void FacturarMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_FacturarMouseExited
@@ -324,6 +338,14 @@ public class Home extends javax.swing.JFrame {
 
     private void historialClinicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialClinicoActionPerformed
         // TODO add your handling code here:
+         PanelHistorialClinico panel = new PanelHistorialClinico();
+        panel.setSize(800, 500);
+        panel.setLocation(0, 0);
+
+        PanelCambiaPestañas.removeAll();
+        PanelCambiaPestañas.add(panel, java.awt.BorderLayout.CENTER);
+        PanelCambiaPestañas.revalidate();
+        PanelCambiaPestañas.repaint();
     }//GEN-LAST:event_historialClinicoActionPerformed
 
     private void agendarCitasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agendarCitasActionPerformed
