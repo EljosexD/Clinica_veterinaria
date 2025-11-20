@@ -1,6 +1,7 @@
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 /*
@@ -21,6 +22,9 @@ public class JPfractura extends javax.swing.JPanel {
     public JPfractura(Home parent) {
         initComponents();
         parentHome = parent;
+        configurarRenderers();
+        cargarClientes();
+        cargarAgenda();
     }
 
     /**
@@ -122,7 +126,7 @@ public class JPfractura extends javax.swing.JPanel {
         JCmetodoDePago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Efectivo","Tarjeta"}));
         Background.add(JCmetodoDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 260, 20));
 
-        JCmascota.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"gatito" }));
+        JCmascota.setModel(new javax.swing.DefaultComboBoxModel<>());
         JCmascota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JCmascotaActionPerformed(evt);
@@ -133,7 +137,7 @@ public class JPfractura extends javax.swing.JPanel {
         jLabel7.setText("Servicio :");
         Background.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
-        JCcliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"jose","manuel" }));
+        JCcliente.setModel(new javax.swing.DefaultComboBoxModel<>());
         Background.add(JCcliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 260, 20));
 
         jLabel8.setText("Precio : ");
@@ -169,20 +173,42 @@ public class JPfractura extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String nombreCliente = (String) JCcliente.getSelectedItem();
-        String nombreClienteMascota = (String) JCmascota.getSelectedItem();
-        String servicio = JTservicio.getText();
-        Double precio = Double.parseDouble(JTpago.getText());
+        ClinicaApp.Cliente cliente = (ClinicaApp.Cliente) JCcliente.getSelectedItem();
+        ClinicaApp.Mascota mascota = (ClinicaApp.Mascota) JCmascota.getSelectedItem();
+        String servicio = JTservicio.getText().trim();
         String cita = (String) JCagenda.getSelectedItem();
         String pago = (String) JCmetodoDePago.getSelectedItem();
-        if(servicio.equalsIgnoreCase("efectivo")){
-           
+
+        if (cliente == null) {
+            JOptionPane.showMessageDialog(this, "Debe existir al menos un cliente registrado.", "Datos requeridos", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        if(servicio.equalsIgnoreCase("tarjeta")){
-            
+        if (mascota == null) {
+            JOptionPane.showMessageDialog(this, "El cliente seleccionado no tiene mascotas registradas.", "Datos requeridos", JOptionPane.WARNING_MESSAGE);
             return;
         }
+        if (servicio.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Ingrese el servicio para la factura.", "Datos requeridos", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        double precio;
+        try {
+            precio = Double.parseDouble(JTpago.getText().trim());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Precio invalido. Ingrese un numero.", "Datos requeridos", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        String detalleCita = cita == null ? "Sin cita asociada" : cita;
+        JOptionPane.showMessageDialog(this,
+                "Factura lista para generar:\n" +
+                        "Cliente: " + cliente.getNombre() + "\n" +
+                        "Mascota: " + mascota.descripcion() + "\n" +
+                        "Servicio: " + servicio + "\n" +
+                        "Precio: " + precio + "\n" +
+                        "Metodo de pago: " + pago + "\n" +
+                        "Cita: " + detalleCita);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void JTpagoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTpagoMousePressed
@@ -193,6 +219,70 @@ public class JPfractura extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_JCmascotaActionPerformed
 
+
+    private void configurarRenderers() {
+        JCcliente.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public java.awt.Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof ClinicaApp.Cliente cliente) {
+                    setText(cliente.resumen());
+                }
+                return this;
+            }
+        });
+        JCcliente.addActionListener(e -> actualizarMascotas());
+
+        JCmascota.setRenderer(new DefaultListCellRenderer() {
+            @Override
+            public java.awt.Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+                super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                if (value instanceof ClinicaApp.Mascota mascota) {
+                    setText(mascota.descripcion());
+                }
+                return this;
+            }
+        });
+    }
+
+    private void cargarClientes() {
+        DefaultComboBoxModel<ClinicaApp.Cliente> model = new DefaultComboBoxModel<>();
+        for (ClinicaApp.Cliente cliente : ClinicaApp.obtenerClientes()) {
+            model.addElement(cliente);
+        }
+        JCcliente.setModel(model);
+        JCcliente.setEnabled(model.getSize() > 0);
+        if (model.getSize() > 0) {
+            JCcliente.setSelectedIndex(0);
+        }
+        actualizarMascotas();
+    }
+
+    private void actualizarMascotas() {
+        ClinicaApp.Cliente cliente = (ClinicaApp.Cliente) JCcliente.getSelectedItem();
+        DefaultComboBoxModel<ClinicaApp.Mascota> model = new DefaultComboBoxModel<>();
+        if (cliente != null) {
+            for (ClinicaApp.Mascota mascota : cliente.getMascotas()) {
+                model.addElement(mascota);
+            }
+        }
+        JCmascota.setModel(model);
+        JCmascota.setEnabled(model.getSize() > 0);
+    }
+
+    private void cargarAgenda() {
+        DefaultComboBoxModel<String> model = new DefaultComboBoxModel<>();
+        for (HistorialMedico.Cita cita : HistorialMedico.getCitas()) {
+            model.addElement(cita.paciente + " | " + cita.fecha + " | " + cita.motivo);
+        }
+        JCagenda.setModel(model);
+        JCagenda.setEnabled(model.getSize() > 0);
+    }
+
+    public void refrescarDatos() {
+        cargarClientes();
+        cargarAgenda();
+    }
 
     
     private void seleccionarMetodoDePago(String metodo){
@@ -210,8 +300,8 @@ public class JPfractura extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Background;
     private javax.swing.JComboBox<String> JCagenda;
-    private javax.swing.JComboBox<String> JCcliente;
-    private javax.swing.JComboBox<String> JCmascota;
+    private javax.swing.JComboBox<ClinicaApp.Cliente> JCcliente;
+    private javax.swing.JComboBox<ClinicaApp.Mascota> JCmascota;
     private javax.swing.JComboBox<String> JCmetodoDePago;
     private javax.swing.JTextField JTpago;
     private javax.swing.JTextField JTservicio;

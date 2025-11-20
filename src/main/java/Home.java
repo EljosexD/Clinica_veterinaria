@@ -234,7 +234,7 @@ public class Home extends javax.swing.JFrame {
         crudClienteMascota.setBackground(new java.awt.Color(255, 255, 254));
         crudClienteMascota.setFont(new java.awt.Font("Roboto Light", 0, 14)); // NOI18N
         crudClienteMascota.setForeground(new java.awt.Color(47, 47, 47));
-        crudClienteMascota.setText("crudClienteMascota");
+        crudClienteMascota.setText("Clientes y Mascotas");
         crudClienteMascota.setBorderPainted(false);
         crudClienteMascota.setFocusPainted(false);
         crudClienteMascota.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -324,7 +324,15 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_historialClinicoMouseMoved
 
     private void crudClienteMascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crudClienteMascotaActionPerformed
-        // TODO add your handling code here:
+        PanelClienteMascota panel = new PanelClienteMascota();
+        panel.setSize(800, 500);
+        panel.setLocation(0, 0);
+
+        PanelCambiaPestañas.setVisible(true);
+        PanelCambiaPestañas.removeAll();
+        PanelCambiaPestañas.add(panel, java.awt.BorderLayout.CENTER);
+        PanelCambiaPestañas.revalidate();
+        PanelCambiaPestañas.repaint();
     }//GEN-LAST:event_crudClienteMascotaActionPerformed
 
     private void historialClinicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historialClinicoActionPerformed

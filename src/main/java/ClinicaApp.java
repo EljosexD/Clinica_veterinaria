@@ -5,10 +5,10 @@ import java.util.Scanner;
 
 public class ClinicaApp {
 
-    // Registro en memoria de todos los clientes y sus mascotas asociadas.
-    private final List<Cliente> clientes = new ArrayList<>();
+    // Registro en memoria de todos los clientes y sus mascotas asociadas (compartido con la GUI).
+    private static final List<Cliente> CLIENTES = new ArrayList<>();
     // Id incremental sencillo para diferenciar clientes en la sesión actual.
-    private int siguienteIdCliente = 1;
+    private static int siguienteIdCliente = 1;
     // Gestor encapsulado de citas para mantener esa lógica separada.
     private final AgendadorCitas agendadorCitas = new AgendadorCitas();
 
@@ -30,7 +30,7 @@ public class ClinicaApp {
                     case 3 -> buscarCliente(scanner);
                     case 4 -> registrarMascota(scanner);
                     case 5 -> listarClientes();
-                    case 6 -> agendadorCitas.agendarCita(scanner, clientes);
+                    case 6 -> agendadorCitas.agendarCita(scanner, CLIENTES);
                     case 7 -> agendadorCitas.listarCitas();
                     case 11 -> listarMascotas();
                     case 13 -> facturas();
@@ -73,14 +73,13 @@ public class ClinicaApp {
         System.out.println("--- Crear cliente ---");
         String nombre = leerTextoObligatorio(scanner, "Nombre: ");
         String telefono = leerTextoObligatorio(scanner, "Telefono: ");
-        Cliente cliente = new Cliente(siguienteIdCliente++, nombre, telefono);
-        clientes.add(cliente);
+        Cliente cliente = registrarCliente(nombre, telefono);
         System.out.println("Cliente creado con ID " + cliente.getId());
     }
 
     // Permite actualizar nombre/teléfono de un cliente ya registrado.
     private void editarCliente(Scanner scanner) {
-        if (clientes.isEmpty()) {
+        if (CLIENTES.isEmpty()) {
             System.out.println("No hay clientes para editar.");
             return;
         }
@@ -107,7 +106,7 @@ public class ClinicaApp {
 
     // Búsqueda simple por nombre o teléfono dentro de la lista actual.
     private void buscarCliente(Scanner scanner) {
-        if (clientes.isEmpty()) {
+        if (CLIENTES.isEmpty()) {
             System.out.println("No hay clientes registrados.");
             return;
         }
@@ -118,7 +117,7 @@ public class ClinicaApp {
             return;
         }
         boolean encontrado = false;
-        for (Cliente cliente : clientes) {
+        for (Cliente cliente : CLIENTES) {
             if (cliente.coincide(termino)) {
                 if (!encontrado) {
                     System.out.println("--- Resultados ---");
@@ -134,7 +133,7 @@ public class ClinicaApp {
 
     // Vincula una nueva mascota (perro o gato) al cliente seleccionado.
     private void registrarMascota(Scanner scanner) {
-        if (clientes.isEmpty()) {
+        if (CLIENTES.isEmpty()) {
             System.out.println("Debe registrar al menos un cliente primero.");
             return;
         }
@@ -185,12 +184,12 @@ public class ClinicaApp {
 
     // Muestra el resumen de todos los clientes registrados.
     private void listarClientes() {
-        if (clientes.isEmpty()) {
+        if (CLIENTES.isEmpty()) {
             System.out.println("No hay clientes registrados.");
             return;
         }
         System.out.println("--- Clientes ---");
-        for (Cliente cliente : clientes) {
+        for (Cliente cliente : CLIENTES) {
             System.out.println(cliente.resumen());
         }
     }
@@ -199,7 +198,7 @@ public class ClinicaApp {
     // Recorre cada cliente mostrando el detalle de sus mascotas.
     private void listarMascotas() {
         System.out.println("--- Mascotas ---");
-        for (Cliente cliente : clientes) {
+        for (Cliente cliente : CLIENTES) {
             System.out.print("Cliente: " + cliente.getNombre());
             for (Mascota mascota : cliente.getMascotas()) {
                 System.out.println("  - " + mascota.descripcion());
@@ -209,7 +208,7 @@ public class ClinicaApp {
 
     // Utilidad para localizar rápidamente un cliente por su ID asignado.
     private Cliente encontrarClientePorId(int id) {
-        for (Cliente cliente : clientes) {
+        for (Cliente cliente : CLIENTES) {
             if (cliente.getId() == id) {
                 return cliente;
             }
@@ -239,6 +238,61 @@ public class ClinicaApp {
             }
             System.out.println("El valor no puede estar vacio.");
         }
+    }
+
+    // Metodos de acceso compartidos para paneles GUI (repositorio en memoria).
+    public static synchronized Cliente registrarCliente(String nombre, String telefono) {
+        if (nombre == null || nombre.trim().isEmpty() || telefono == null || telefono.trim().isEmpty()) {
+            throw new IllegalArgumentException("Nombre y telefono son obligatorios");
+        }
+        Cliente cliente = new Cliente(siguienteIdCliente++, nombre.trim(), telefono.trim());
+        CLIENTES.add(cliente);
+        return cliente;
+    }
+
+    public static synchronized void agregarMascota(int clienteId, Mascota mascota) {
+        Cliente cliente = null;
+        for (Cliente c : CLIENTES) {
+            if (c.getId() == clienteId) {
+                cliente = c;
+                break;
+            }
+        }
+        if (cliente == null) {
+            throw new IllegalArgumentException("Cliente no encontrado para registrar la mascota");
+        }
+        cliente.agregarMascota(mascota);
+    }
+
+    public static synchronized List<Cliente> obtenerClientes() {
+        return new ArrayList<>(CLIENTES);
+    }
+
+    public static synchronized boolean hayClientesConMascotas() {
+        for (Cliente cliente : CLIENTES) {
+            if (!cliente.getMascotas().isEmpty()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static synchronized String resumenClientes() {
+        if (CLIENTES.isEmpty()) {
+            return "No hay clientes registrados.";
+        }
+        StringBuilder sb = new StringBuilder();
+        for (Cliente cliente : CLIENTES) {
+            sb.append(cliente.resumen()).append(System.lineSeparator());
+            if (cliente.getMascotas().isEmpty()) {
+                sb.append("  Sin mascotas registradas.").append(System.lineSeparator());
+                continue;
+            }
+            for (Mascota mascota : cliente.getMascotas()) {
+                sb.append("  - ").append(mascota.descripcion()).append(System.lineSeparator());
+            }
+        }
+        return sb.toString();
     }
 
     // Lector robusto para enteros desde consola, reutilizado en todo el flujo.
