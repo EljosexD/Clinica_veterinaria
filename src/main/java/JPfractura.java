@@ -36,61 +36,44 @@ public class JPfractura extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
         Background = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        JCagenda = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        JTservicio = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        JCmetodoDePago = new javax.swing.JComboBox<>();
+        jPanel1 = new javax.swing.JPanel();
+        JCcliente = new javax.swing.JComboBox<>();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         JCmascota = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        JCcliente = new javax.swing.JComboBox<>();
+        JTservicio = new javax.swing.JTextField();
+        jSeparator1 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
         JTpago = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
+        jLabel6 = new javax.swing.JLabel();
+        JCagenda = new javax.swing.JComboBox<>();
+        jLabel3 = new javax.swing.JLabel();
+        JCmetodoDePago = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        Icono = new javax.swing.JLabel();
+        Icono1 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 100, Short.MAX_VALUE)
+        );
 
         Background.setBackground(new java.awt.Color(255, 255, 255));
         Background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel1.setText("Mascota : ");
-        Background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, -1, -1));
-
-        JCagenda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { }));
-        Background.add(JCagenda, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 390, 260, -1));
-
-        jLabel2.setText("Cliente");
-        Background.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, -1));
-
-        jLabel3.setText("Metodo de pago");
-        Background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 430, -1, -1));
-
-        jLabel6.setText("Selecione la agenda");
-        Background.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, -1));
-
-        JTservicio.setText("Ingrese el servicio");
-        JTservicio.setBorder(null);
-        JTservicio.setOpaque(true);
-        JTservicio.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                JTservicioMousePressed(evt);
-            }
-        });
-        Background.add(JTservicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 300, 30));
-
-        jButton1.setText("Generar el recibo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        Background.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 500, 240, 50));
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
 
@@ -121,28 +104,50 @@ public class JPfractura extends javax.swing.JPanel {
         );
 
         Background.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, -1));
-        Background.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 300, -1));
 
-        JCmetodoDePago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Efectivo","Tarjeta"}));
-        Background.add(JCmetodoDePago, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 260, 20));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        JCcliente.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        JCcliente.setModel(new DefaultComboBoxModel<>());
+
+        jLabel2.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        jLabel2.setText("Cliente");
+
+        jLabel1.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        jLabel1.setText("Mascota : ");
+
+        JCmascota.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         JCmascota.setModel(new javax.swing.DefaultComboBoxModel<>());
         JCmascota.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JCmascotaActionPerformed(evt);
             }
         });
-        Background.add(JCmascota, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 260, -1));
 
+        jLabel7.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         jLabel7.setText("Servicio :");
-        Background.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, -1));
 
-        JCcliente.setModel(new javax.swing.DefaultComboBoxModel<>());
-        Background.add(JCcliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 260, 20));
+        JTservicio.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        JTservicio.setText("Ingrese el servicio");
+        JTservicio.setBorder(null);
+        JTservicio.setOpaque(true);
+        JTservicio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                JTservicioMousePressed(evt);
+            }
+        });
+        JTservicio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTservicioActionPerformed(evt);
+            }
+        });
 
+        jSeparator1.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabel8.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         jLabel8.setText("Precio : ");
-        Background.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
 
+        JTpago.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
         JTpago.setText("Ingrese el precio");
         JTpago.setBorder(null);
         JTpago.setOpaque(true);
@@ -151,8 +156,143 @@ public class JPfractura extends javax.swing.JPanel {
                 JTpagoMousePressed(evt);
             }
         });
-        Background.add(JTpago, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 300, 30));
-        Background.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 300, 20));
+        JTpago.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTpagoActionPerformed(evt);
+            }
+        });
+
+        jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
+
+        jLabel6.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        jLabel6.setText("Selecione la agenda");
+
+        JCagenda.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        JCagenda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { }));
+
+        jLabel3.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        jLabel3.setText("Metodo de pago");
+
+        JCmetodoDePago.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        JCmetodoDePago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {"Efectivo","Tarjeta"}));
+
+        jButton1.setBackground(new java.awt.Color(255, 255, 254));
+        jButton1.setFont(new java.awt.Font("Roboto Light", 1, 12)); // NOI18N
+        jButton1.setText("Generar el recibo");
+        jButton1.setBorder(null);
+        jButton1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jButton1MouseMoved(evt);
+            }
+        });
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton1MouseExited(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        Icono.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/canine.png"))); // NOI18N
+
+        Icono1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons/cat.png"))); // NOI18N
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(152, 152, 152)
+                .addComponent(Icono1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Icono)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel2)
+                        .addComponent(JTservicio, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                        .addComponent(jSeparator1)
+                        .addComponent(JCagenda, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6)
+                    .addComponent(JCcliente, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(108, 108, 108)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(JCmetodoDePago, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(91, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(JCmascota, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8)
+                            .addComponent(JTpago)
+                            .addComponent(jSeparator2))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(27, 27, 27)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JCcliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JCmascota, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(JTservicio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addGap(12, 12, 12)
+                        .addComponent(JTpago, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JCagenda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JCmetodoDePago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(Icono1)
+                        .addContainerGap(82, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Icono))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+
+        Background.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 700, 460));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/background/Fondo de factrura 2.0.png"))); // NOI18N
+        Background.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -209,15 +349,43 @@ public class JPfractura extends javax.swing.JPanel {
                         "Precio: " + precio + "\n" +
                         "Metodo de pago: " + pago + "\n" +
                         "Cita: " + detalleCita);
+                        GeneradorFactura factura = new GeneradorFactura(cliente.getNombre(), mascota.getNombre(), servicio, precio);
+                        boolean metododepago;
+                        if(pago.equalsIgnoreCase("Efectivo")){
+                            metododepago = true;
+                        }else{
+                            metododepago = false;
+                        }
+                        factura.generarFactura(metododepago);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void JTpagoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTpagoMousePressed
         // TODO add your handling code here:
+            JTpago.setText("");
     }//GEN-LAST:event_JTpagoMousePressed
 
     private void JCmascotaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JCmascotaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JCmascotaActionPerformed
+
+    private void jButton1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseMoved
+        // TODO add your handling code here:
+        jButton1.setBackground(new java.awt.Color(153,0,255));
+    }//GEN-LAST:event_jButton1MouseMoved
+
+    private void jButton1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseExited
+        // TODO add your handling code here:
+         jButton1.setBackground(new java.awt.Color(255,255,254)); 
+    }//GEN-LAST:event_jButton1MouseExited
+
+    private void JTpagoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTpagoActionPerformed
+        // TODO add your handling code here:
+        JTpago.setText("");
+    }//GEN-LAST:event_JTpagoActionPerformed
+
+    private void JTservicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTservicioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTservicioActionPerformed
 
 
     private void configurarRenderers() {
@@ -299,8 +467,10 @@ public class JPfractura extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Background;
+    private javax.swing.JLabel Icono;
+    private javax.swing.JLabel Icono1;
     private javax.swing.JComboBox<String> JCagenda;
-    private javax.swing.JComboBox<ClinicaApp.Cliente> JCcliente;
+        private javax.swing.JComboBox<ClinicaApp.Cliente> JCcliente;
     private javax.swing.JComboBox<ClinicaApp.Mascota> JCmascota;
     private javax.swing.JComboBox<String> JCmetodoDePago;
     private javax.swing.JTextField JTpago;
@@ -314,6 +484,9 @@ public class JPfractura extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

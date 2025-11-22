@@ -33,7 +33,6 @@ public class ClinicaApp {
                     case 6 -> agendadorCitas.agendarCita(scanner, CLIENTES);
                     case 7 -> agendadorCitas.listarCitas();
                     case 11 -> listarMascotas();
-                    case 13 -> facturas();
                     case 0 -> {
                         System.out.println("Hasta luego.");
                         salir = true;
@@ -45,16 +44,7 @@ public class ClinicaApp {
             }
         }
     }
-    private void facturas(){
-        FacturaEfectivo facturaE = new FacturaEfectivo("Jose", "555-1234", "Firulais", "2024-06-15", 100.0);
-        FacturaDigital facturaD = new FacturaDigital("Jose", "555-1234", "Firulais", "2024-06-15", 100.0);
 
-        facturaE.generarFacturaPdf();
-        facturaD.generarFacturaPdf();
-        // jfFactura.setVisible(true);
-        // jfFactura.setLocationRelativeTo(null);
-        // jfFactura.getFactura(factura);
-    }
 
     private void mostrarMenu() {
         System.out.println("=== Clinica Veterinaria ===");
